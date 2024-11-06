@@ -1,5 +1,6 @@
 // drawer_menu.dart
 import 'package:flutter/material.dart';
+import 'ScanScreen.dart';
 
 class DrawerMenu extends StatelessWidget {
   @override
@@ -15,17 +16,27 @@ class DrawerMenu extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Inicio'),
+            leading: const Icon(Icons.home),
+            title: const Text('Inicio'),
             onTap: () {
               Navigator.pop(context);
             },
           ),
           ListTile(
-            leading: Icon(Icons.category),
-            title: Text('Categorías'),
+            leading: const Icon(Icons.category),
+            title: const Text('Categorías'),
             onTap: () {
               Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.qr_code_scanner),
+            title: const Text('Escanear Producto'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ScanScreen()),
+              );
             },
           ),
           // Agrega más elementos de menú aquí
