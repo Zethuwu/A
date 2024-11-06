@@ -1,4 +1,5 @@
 // drawer_menu.dart
+import 'package:abarrotes/PromotionScreen.dart';
 import 'package:flutter/material.dart';
 import 'ScanScreen.dart';
 
@@ -36,6 +37,16 @@ class DrawerMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ScanScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.price_check_outlined),
+            title: const Text('Promociones'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PromotionScreen()),
               );
             },
           ),
