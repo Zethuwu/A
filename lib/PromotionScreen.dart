@@ -24,10 +24,10 @@ class PromotionScreen extends StatelessWidget {
       title: 'Promociones Especiales en PDF',
       description: 'Haz clic para ver el PDF.',
       isPDF: true,
-      pdfPath: 'assets/promociones.pdf',
+      pdfPath: 'assets/promocion.pdf',
     ),
     Promotion(
-      imageUrl: 'assets/pdf_icon.png', // Icono de PDF para el segundo PDF
+      imageUrl: 'assets/icon_pdf.png', // Icono de PDF para el segundo PDF
       title: 'Promoción Extra en PDF',
       description: 'Haz clic para ver el segundo PDF.',
       isPDF: true,

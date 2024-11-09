@@ -1,56 +1,55 @@
 import 'package:flutter/material.dart';
-import 'Product.dart';
+import 'product.dart';
 
 class ProductCard extends StatelessWidget {
-  final int index;
+  final Product product;
 
-  ProductCard({required this.index});
-
-  final List<Product> products = [
-    Product(
-      imageUrl:
-          'assets/product1.png', // Reemplaza con tus imágenes de productos
-      name: 'Producto 1',
-      price: 10.0,
-    ),
-    Product(
-      imageUrl: 'assets/product2.png',
-      name: 'Producto 2',
-      price: 20.0,
-    ),
-    // Agrega más productos
-  ];
+  const ProductCard({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final product = products[index % products.length];
     return Card(
+      margin: EdgeInsets.all(8.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      elevation: 4,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                product.imageUrl,
-                height: 120, // Incrementa el tamaño de la imagen
-                fit: BoxFit.contain,
-              ),
+          // Imagen del producto
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+            child: Image.asset(
+              'assets/${product.imagePath}', // Imagen de la carpeta assets
+              height: 300, // Cambia la altura según lo que necesites
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: Text(
-              product.name,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text(
-              '\$${product.price.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+            padding: EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Nombre del producto
+                Text(
+                  product.name,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 4),
+                // Precio del producto
+                Text(
+                  '\$${product.price.toStringAsFixed(2)}',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ],
             ),
           ),
         ],

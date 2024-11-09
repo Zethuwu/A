@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "442039896279",
+    "project_id": "abarrotes-e5b20",
+    "storage_bucket": "abarrotes-e5b20.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:442039896279:android:b752d80307982efab50892",
+        "android_client_info": {
+          "package_name": "com.example.abarrotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjrKGitUH727hRseH2NB6dEnvjYfsGS0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

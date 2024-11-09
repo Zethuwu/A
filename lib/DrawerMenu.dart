@@ -1,38 +1,51 @@
-// drawer_menu.dart
+import 'package:abarrotes/AuthScreen.dart';
+import 'package:abarrotes/HomeScreen.dart';
+import 'package:abarrotes/ProductGridScreen.dart';
 import 'package:abarrotes/PromotionScreen.dart';
+import 'package:abarrotes/ReportsScreen.dart';
+import 'package:abarrotes/ScanScreen.dart';
 import 'package:flutter/material.dart';
-import 'ScanScreen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class DrawerMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool isLoggedIn = FirebaseAuth.instance.currentUser != null;
+
     return Drawer(
       child: ListView(
+        padding: EdgeInsets.zero,
         children: [
           const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.blue),
             child: Text(
-              'Menu',
+              'Abarrotes App',
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
+            decoration: BoxDecoration(color: Colors.blue),
           ),
           ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Inicio'),
+            leading: Icon(Icons.home),
+            title: Text('Menú'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen()),
+              );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.category),
-            title: const Text('Categorías'),
+            leading: Icon(Icons.shopping_bag),
+            title: Text('Productos'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductGridScreen()),
+              );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.qr_code_scanner),
-            title: const Text('Escanear Producto'),
+            leading: Icon(Icons.qr_code_scanner),
+            title: Text('Código de Barras'),
             onTap: () {
               Navigator.push(
                 context,
@@ -41,8 +54,8 @@ class DrawerMenu extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.price_check_outlined),
-            title: const Text('Promociones'),
+            leading: Icon(Icons.local_offer),
+            title: Text('Promociones'),
             onTap: () {
               Navigator.push(
                 context,
@@ -50,7 +63,45 @@ class DrawerMenu extends StatelessWidget {
               );
             },
           ),
-          // Agrega más elementos de menú aquí
+          if (isLoggedIn) ...[
+            ListTile(
+              leading: Icon(Icons.insert_chart),
+              title: Text('Informes'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ReportsScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.check_circle),
+              title: Text('Checking'),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Cerrar sesión'),
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+            ),
+          ] else ...[
+            ListTile(
+              leading: const Icon(Icons.login),
+              title: const Text('Iniciar sesión'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AuthScreen()),
+                );
+              },
+            ),
+          ],
         ],
       ),
     );

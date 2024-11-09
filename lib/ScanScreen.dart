@@ -1,4 +1,3 @@
-// scan_screen.dart
 import 'package:flutter/material.dart';
 import 'package:barcode_scan2/barcode_scan2.dart';
 import 'ProductDetailScreen.dart';
@@ -22,21 +21,13 @@ class _ScanScreenState extends State<ScanScreen> {
     }
   }
 
-  void _navigateToProductDetails(String data) {
-    List<String> details = data.split('/');
-    if (details.length == 4) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ProductDetailScreen(
-            name: details[0],
-            price: double.parse(details[1]),
-            expirationDate: details[2],
-            productId: details[3],
-          ),
-        ),
-      );
-    }
+  void _navigateToProductDetails(String productId) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ProductDetailScreen(productId: productId),
+      ),
+    );
   }
 
   @override
