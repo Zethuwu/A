@@ -1,5 +1,7 @@
 import 'package:abarrotes/AuthScreen.dart';
+import 'package:abarrotes/CheckInScreen.dart';
 import 'package:abarrotes/HomeScreen.dart';
+import 'package:abarrotes/ProductEntryScreen.dart';
 import 'package:abarrotes/ProductGridScreen.dart';
 import 'package:abarrotes/PromotionScreen.dart';
 import 'package:abarrotes/ReportsScreen.dart';
@@ -17,15 +19,15 @@ class DrawerMenu extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           const DrawerHeader(
+            decoration: BoxDecoration(color: Colors.blue),
             child: Text(
               'Abarrotes App',
               style: TextStyle(color: Colors.white, fontSize: 24),
             ),
-            decoration: BoxDecoration(color: Colors.blue),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Menú'),
+            leading: const Icon(Icons.home),
+            title: const Text('Menú'),
             onTap: () {
               Navigator.push(
                 context,
@@ -77,11 +79,26 @@ class DrawerMenu extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.check_circle),
               title: Text('Checking'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CheckInScreen()),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Cerrar sesión'),
+              leading: const Icon(Icons.add_to_queue),
+              title: const Text('Agregar Productos'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductEntryScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Cerrar sesión'),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
                 Navigator.pushReplacement(

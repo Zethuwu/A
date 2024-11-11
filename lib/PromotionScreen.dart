@@ -60,7 +60,7 @@ class PromotionScreen extends StatelessWidget {
           return Container(
             padding: EdgeInsets.all(16.0),
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: Color.fromARGB(255, 56, 56, 56),
               borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
             ),
             child: Column(

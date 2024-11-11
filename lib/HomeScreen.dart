@@ -26,19 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset('assets/Logo.png', height: 40),
-            SizedBox(
-              width: 200,
-              height: 35,
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Buscar productos...',
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),
@@ -72,7 +59,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return const Center(child: Text('Error al cargar productos'));
+                  return Center(
+                      child:
+                          Text('Error al cargar productos: ${snapshot.error}'));
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                   return const Center(
                       child: Text('No hay productos disponibles'));

@@ -54,10 +54,10 @@ class ProductDetailScreen2 extends StatelessWidget {
               SizedBox(height: 20),
               // Imagen adicional en la parte inferior
               Container(
-                height: 120,
-                width: double.infinity,
+                height: 150,
+                width: 300,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(2),
                   image: DecorationImage(
                     image: AssetImage('assets/${product.name}Code.png'),
                     fit: BoxFit.cover,

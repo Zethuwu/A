@@ -1,5 +1,3 @@
-import 'package:flutter/scheduler.dart';
-
 class Product {
   final String name;
   final double price;
